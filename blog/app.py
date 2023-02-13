@@ -5,7 +5,7 @@ from blog.commands import CreateArticleCommand
 from blog.queries import GetArticleByIDQuery, ListArticlesQuery
 
 app = Flask(__name__)
-    
+
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
