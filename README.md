@@ -3,6 +3,7 @@
 
 # Fairwinds Blog with API
 
-Initial copy-paste from:
+Initial copy-paste from the article "Modern Test-Driven Development in Python":
 
 https://testdriven.io/blog/modern-tdd/
+

@@ -5,10 +5,6 @@ from blog.commands import CreateArticleCommand
 from blog.queries import GetArticleByIDQuery, ListArticlesQuery
 
 app = Flask(__name__)
-    
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
 
 @app.errorhandler(ValidationError)
 def handle_validation_exception(error):
@@ -23,6 +19,7 @@ def create_article():
     )
     return jsonify(cmd.execute().dict())
 
+
 @app.route("/article/<article_id>/", methods=["GET"])
 def get_article(article_id):
     query = GetArticleByIDQuery(
@@ -30,11 +27,14 @@ def get_article(article_id):
     )
     return jsonify(query.execute().dict())
 
+
 @app.route("/article-list/", methods=["GET"])
 def list_articles():
     query = ListArticlesQuery()
     records = [record.dict() for record in query.execute()]
     return jsonify(records)
 
+
 if __name__ == "__main__":
     app.run()
+    
