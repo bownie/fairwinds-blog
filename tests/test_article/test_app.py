@@ -24,7 +24,7 @@ def validate_payload(payload, schema_name):
     schemas_dir = str(
         f"{pathlib.Path(__file__).parent.absolute()}/schemas"
     )
-    schema = json.loads(pathlib.Path(f"{schemas_dir}/{schema_name}", encoding="utf-8")).read_text()
+    schema = json.loads(pathlib.Path(f"{schemas_dir}/{schema_name}").read_text(encoding="utf-8"))
     validate(
         payload,
         schema,
