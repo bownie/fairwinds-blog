@@ -7,13 +7,15 @@ from jsonschema import validate, RefResolver
 from blog.models import Article
 from blog.app import app
 
+TITLE="New Article"
+CONTENT_TYPE="application/json"
+
 @pytest.fixture
 def client():
     app.config["TESTING"] = True
 
     with app.test_client() as client:
         yield client
-
 
 def validate_payload(payload, schema_name):
     """
@@ -32,7 +34,6 @@ def validate_payload(payload, schema_name):
         )
     )
 
-
 def test_create_article(client):
     """
     GIVEN request data for new article
@@ -41,7 +42,7 @@ def test_create_article(client):
     """
     data = {
         'author': "john@doe.com",
-        "title": "New Article",
+        "title": TITLE,
         "content": "Some extra awesome content"
     }
     response = client.post(
@@ -49,11 +50,10 @@ def test_create_article(client):
         data=json.dumps(
             data
         ),
-        content_type="application/json",
+        content_type=CONTENT_TYPE,
     )
 
     validate_payload(response.json, "Article.json")
-
 
 def test_get_article(client):
     """
@@ -63,12 +63,12 @@ def test_get_article(client):
     """
     article = Article(
         author="jane@doe.com",
-        title="New Article",
+        title=TITLE,
         content="Super extra awesome article"
     ).save()
     response = client.get(
         f"/article/{article.id}/",
-        content_type="application/json",
+        content_type=CONTENT_TYPE,
     )
 
     validate_payload(response.json, "Article.json")
@@ -87,11 +87,10 @@ def test_list_articles(client):
     ).save()
     response = client.get(
         "/article-list/",
-        content_type="application/json",
+        content_type=CONTENT_TYPE,
     )
 
     validate_payload(response.json, "ArticleList.json")
-
 
 @pytest.mark.parametrize(
     "data",
@@ -112,6 +111,7 @@ def test_list_articles(client):
         }
     ]
 )
+
 def test_create_article_bad_request(client, data):
     """
     GIVEN request data with invalid values or missing attributes
@@ -123,7 +123,7 @@ def test_create_article_bad_request(client, data):
         data=json.dumps(
             data
         ),
-        content_type="application/json",
+        content_type=CONTENT_TYPE,
     )
 
     assert response.status_code == 400
