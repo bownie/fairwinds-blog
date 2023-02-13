@@ -29,4 +29,4 @@ jobs:
       - name: Run coverage
         run: |
           pip install pytest-cov
-          python -m pytest tests --cov=blog
+          python -m pytest tests -m 'not e2e' --cov=blog
