@@ -1,6 +1,11 @@
 name: Pylint
 
-on: [push]
+on:
+  workflow_dispatch:
+  push:
+    paths-ignore:
+      - '.github/workflows/**'
+      - 'README.*'
 
 jobs:
   build:
