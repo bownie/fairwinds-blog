@@ -1,5 +1,5 @@
-[![Run Python Tests](https://github.com/bownie/fairwinds-blog/actions/workflows/test.yml/badge.svg)](https://github.com/bownie/fairwinds-blog/actions/workflows/test.yml)
-
+[![Tests](https://github.com/bownie/fairwinds-blog/actions/workflows/test.yml/badge.svg)](https://github.com/bownie/fairwinds-blog/actions/workflows/test.yml)
+[![Linter](https://github.com/bownie/fairwinds-blog/actions/workflows/pylint.yml/badge.svg)](https://github.com/bownie/fairwinds-blog/actions/workflows/pylint.yml)
 
 # Fairwinds Blog with API
 
