@@ -3,6 +3,7 @@ import pytest
 from blog.models import Article
 from blog.commands import CreateArticleCommand, AlreadyExists
 
+NEW_ARTICLE="New Article";
 
 def test_create_article():
     """
@@ -12,7 +13,7 @@ def test_create_article():
     """
     cmd = CreateArticleCommand(
         author="john@doe.com",
-        title="New Article",
+        title=NEW_ARTICLE,
         content="Super awesome article"
     )
 
@@ -35,13 +36,13 @@ def test_create_article_already_exists():
 
     Article(
         author="jane@doe.com",
-        title="New Article",
+        title = NEW_ARTICLE,
         content="Super extra awesome article"
     ).save()
 
     cmd = CreateArticleCommand(
         author="john@doe.com",
-        title="New Article",
+        title=NEW_ARTICLE,
         content="Super awesome article"
     )
 
