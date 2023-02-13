@@ -5,6 +5,7 @@ from typing import List
 
 from pydantic import BaseModel, EmailStr, Field
 
+DATABASE_DB="DATABASE_DB"
 
 class NotFound(Exception):
     pass
@@ -18,7 +19,7 @@ class Article(BaseModel):
 
     @classmethod
     def get_by_id(cls, article_id: str):
-        con = sqlite3.connect(os.getenv("DATABASE_NAME", "database.db"))
+        con = sqlite3.connect(os.getenv("DATABASE_NAME", DATABASE_DB))
         con.row_factory = sqlite3.Row
 
         cur = con.cursor()
@@ -36,7 +37,7 @@ class Article(BaseModel):
 
     @classmethod
     def get_by_title(cls, title: str):
-        con = sqlite3.connect(os.getenv("DATABASE_NAME", "database.db"))
+        con = sqlite3.connect(os.getenv("DATABASE_NAME", DATABASE_DB))
         con.row_factory = sqlite3.Row
 
         cur = con.cursor()
@@ -54,7 +55,7 @@ class Article(BaseModel):
 
     @classmethod
     def list(cls) -> List["Article"]:
-        con = sqlite3.connect(os.getenv("DATABASE_NAME", "database.db"))
+        con = sqlite3.connect(os.getenv("DATABASE_NAME", DATABASE_DB))
         con.row_factory = sqlite3.Row
 
         cur = con.cursor()
@@ -67,7 +68,7 @@ class Article(BaseModel):
         return articles
 
     def save(self) -> "Article":
-        with sqlite3.connect(os.getenv("DATABASE_NAME", "database.db")) as con:
+        with sqlite3.connect(os.getenv("DATABASE_NAME", DATABASE_DB)) as con:
             cur = con.cursor()
             cur.execute(
                 "INSERT INTO articles (id,author,title,content) VALUES(?, ?, ?, ?)",
@@ -78,7 +79,7 @@ class Article(BaseModel):
         return self
 
     @classmethod
-    def create_table(cls, database_name="database.db"):
+    def create_table(cls, database_name=DATABASE_DB):
         conn = sqlite3.connect(database_name)
 
         conn.execute(

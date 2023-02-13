@@ -2,6 +2,8 @@ from blog.models import Article
 from blog.queries import ListArticlesQuery, GetArticleByIDQuery
 
 
+AUTHOR_EMAIL="jane@doe.com"
+
 def test_list_articles():
     """
     GIVEN 2 articles stored in the database
@@ -9,12 +11,12 @@ def test_list_articles():
     THEN it should return 2 articles
     """
     Article(
-        author="jane@doe.com",
+        author=AUTHOR_EMAIL,
         title="New Article",
         content="Super extra awesome article"
     ).save()
     Article(
-        author="jane@doe.com",
+        author=AUTHOR_EMAIL,
         title="Another Article",
         content="Super awesome article"
     ).save()
@@ -31,7 +33,7 @@ def test_get_article_by_id():
     THEN it should return the article with the same ID
     """
     article = Article(
-        author="jane@doe.com",
+        author=AUTHOR_EMAIL,
         title="New Article",
         content="Super extra awesome article"
     ).save()
