@@ -1,6 +1,7 @@
 import json
 import pathlib
 import requests
+import urllib3
 
 import pytest
 from jsonschema import validate, RefResolver
@@ -133,7 +134,7 @@ def test_create_article_bad_request(client, data):
 @pytest.mark.e2e
 def test_create_list_get():
     # need this to ensure localhost works consistently locally
-    requests.packages.urllib3.util.connection.HAS_IPV6 = False
+    urllib3.util.connection.HAS_IPV6 = False
 
     response = requests.post(
         "http://localhost:5000/create-article/",
