@@ -136,7 +136,7 @@ def test_create_list_get():
     # need this to ensure localhost works consistently locally
     urllib3.util.connection.HAS_IPV6 = False
 
-    response = requests.post(
+    requests.post(
         "http://localhost:5000/create-article/",
         timeout=5,
         json={
