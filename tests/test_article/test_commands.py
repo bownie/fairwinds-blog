@@ -3,7 +3,7 @@ import pytest
 from blog.models import Article
 from blog.commands import CreateArticleCommand, AlreadyExists
 
-NEW_ARTICLE="New Article";
+NEW_ARTICLE="New Article"
 
 def test_create_article():
     """

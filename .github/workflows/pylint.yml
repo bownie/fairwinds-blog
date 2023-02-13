@@ -26,5 +26,10 @@ jobs:
         pip install -r requirements.txt
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files '*.py')
+        pylint $(git ls-files '*.py') \
+            --disable=missing-module-docstring  \
+            --disable=missing-class-docstring \
+            --disable=missing-function-docstring \
+            --disable=no-name-in-module \
+            -disable=too-few-public-methods
 

@@ -86,3 +86,4 @@ class Article(BaseModel):
             "CREATE TABLE IF NOT EXISTS articles (id TEXT, author TEXT, title TEXT, content TEXT)"
         )
         conn.close()
+        
