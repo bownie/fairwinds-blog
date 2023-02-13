@@ -131,23 +131,26 @@ def test_create_article_bad_request(client, data):
     assert response.json is not None
 
 @pytest.mark.e2e
-def test_create_list_get(client):
+def test_create_list_get():
     # need this to ensure localhost works consistently locally
     requests.packages.urllib3.util.connection.HAS_IPV6 = False
 
     response = requests.post(
         "http://localhost:5000/create-article/",
+        timeout=5
         json={
             "author": "john@doe.com",
             "title": "New Article",
             "content": "Some extra awesome content"
-        }
+        },
+        
     )
 
     #assert response.status_code == 200
-    
+
     response = requests.get(
         "http://localhost:5000/article-list/",
+        timeout=5
     )
 
     assert response.status_code == 200
@@ -156,6 +159,7 @@ def test_create_list_get(client):
 
     response = requests.get(
         f"http://localhost:5000/article/{articles[0]['id']}/",
+        timeout=5
     )
 
     assert response.status_code == 200
