@@ -3,7 +3,7 @@
 
 # Modern TDD Python Blog example
 
-Expanding on the code examples in the article "Modern Test-Driven Development in Python" by [![jangia](https://github.com/jangia)]:
+Expanding on the code examples in the article "Modern Test-Driven Development in Python" by [jangia](https://github.com/jangia):
 
 https://testdriven.io/blog/modern-tdd/
 
