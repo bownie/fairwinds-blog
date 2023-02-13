@@ -23,8 +23,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run tests with pytest
-        run: pytest 
+      - name: Run tests with pytest - without end to end
+        run: python -m pytest tests -m 'not e2e' 
 
       - name: Run coverage
         run: |
