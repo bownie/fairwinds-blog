@@ -137,13 +137,12 @@ def test_create_list_get():
 
     response = requests.post(
         "http://localhost:5000/create-article/",
-        timeout=5
+        timeout=5,
         json={
             "author": "john@doe.com",
             "title": "New Article",
             "content": "Some extra awesome content"
-        },
-        
+        }
     )
 
     #assert response.status_code == 200
