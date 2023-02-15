@@ -84,7 +84,7 @@ def test_list_articles(client):
     """
     Article(
         author="jane@doe.com",
-        title="New Article",
+        title=TITLE,
         content="Super extra awesome article"
     ).save()
     response = client.get(
@@ -145,8 +145,6 @@ def test_create_list_get():
             "content": "Some extra awesome content"
         }
     )
-
-    #assert response.status_code == 200
 
     response = requests.get(
         "http://localhost:5000/article-list/",

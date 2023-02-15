@@ -1,0 +1,4 @@
+{
+    "python.linting.enabled": true,
+    "pylint.args": ["--disable", "redefined-outer-name"]
+}
